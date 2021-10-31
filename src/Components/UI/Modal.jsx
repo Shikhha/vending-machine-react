@@ -4,7 +4,7 @@ import reactDom from "react-dom";
 import classes from "./ui.module.css";
 
 const BackShade = (props) => {
-  return <div className={classes.backshade}></div>;
+  return <div className={classes.backshade} onClick={props.onClose}></div>;
 };
 const Overlay = (props) => {
   return (
@@ -17,7 +17,7 @@ const Modal = (props) => {
   return (
     <Fragment>
       {reactDom.createPortal(
-        <BackShade></BackShade>,
+        <BackShade onClose={props.onClose}></BackShade>,
         document.getElementById("overlays")
       )}
       {reactDom.createPortal(

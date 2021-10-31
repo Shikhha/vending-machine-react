@@ -7,11 +7,11 @@ import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 const ProductItem = (props) => {
   return (
     <Card className={classes["product-card__container"]}>
+      <Card.Header as="h5"> {props.product.name}</Card.Header>
       <Card.Body>
         <Card.Title>
-          {props.product.name}
           <span className={classes["product-card__title"]}>
-            {props.product.amount}
+            {`${props.product.amount} left`}
           </span>
         </Card.Title>
         <Card.Text>{`$${props.product.price}`}</Card.Text>
