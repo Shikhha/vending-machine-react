@@ -1,0 +1,13 @@
+.product-card__container {
+  background-color: grey !important;
+  color: azure;
+  margin: 1em;
+  height: 150px;
+}
+
+.product-card__title {
+  padding-left: 5px;
+}
+.product-container_list {
+  display: flex;
+}

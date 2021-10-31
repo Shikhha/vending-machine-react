@@ -1,15 +1,17 @@
 import Header from '../../components/Header/Header';
 import CustomerPurse from '../../components/Customer/CustomerPurse';
+import Products from '../../components/Product/Products';
 import classes from "./App.module.css"
-import Deposit from '../../components/Customer/Deposit/Deposit';
+import Cart from "../../components/Header/Cart/Cart"
+import { Fragment } from 'react';
 
 function App() {
   return (
-    <div>
+    <Fragment>
       <Header />
       <div className={classes.container}><CustomerPurse />
-      <CustomerPurse /></div>
-    </div>
+      <Products /></div>
+    </Fragment>
   );
 }
 
