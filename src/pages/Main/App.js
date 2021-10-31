@@ -1,4 +1,5 @@
 import './App.css';
+import Item from '../../Components/Item';
 
 function App() {
   return (
@@ -6,6 +7,7 @@ function App() {
       <header className="App-header">
           Vending Machine
       </header>
+      <Item />
     </div>
   );
 }
