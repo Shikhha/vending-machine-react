@@ -7,12 +7,18 @@ import CartProduct from "./CartProduct";
 import { ListGroup } from "react-bootstrap";
 
 const Cart = (props) => {
+  const [isOrderPlaced, setOrderPlaced] = useState(false);
   const ctx = useContext(AppContext);
-  const { products, totalAmount } = ctx;
+  const { products, totalAmount, deposit } = ctx;
   const totalAmt = `$${totalAmount}`;
   const RemoveProductHandler = (id) => {
-    console.log("id: ", id);
     ctx.removeProduct(id);
+  };
+  const orderPlacedHandler = () => {
+    console.log("deposit : ", deposit);
+    const change = deposit - totalAmount;
+    ctx.setChange(change);
+    setOrderPlaced(true);
   };
   return (
     <Modal onClose={props.onClose}>
@@ -22,6 +28,7 @@ const Cart = (props) => {
             key={product.id}
             product={product}
             onRemove={RemoveProductHandler}
+            isOrderPlaced={isOrderPlaced}
           />
         ))}
       </ListGroup>
@@ -38,8 +45,18 @@ const Cart = (props) => {
         >
           Close
         </Button>
-        {ctx.products.length > 0 && (
-          <Button className={classes["action-button_order"]}>Order</Button>
+        {ctx.products.length > 0 && !isOrderPlaced && (
+          <Button
+            className={classes["action-button_order"]}
+            onClick={orderPlacedHandler}
+          >
+            Order
+          </Button>
+        )}
+        {isOrderPlaced && (
+          <h3 className={classes["action-button_order_text"]}>
+            Order Placed, Collect your change !
+          </h3>
         )}
       </div>
     </Modal>

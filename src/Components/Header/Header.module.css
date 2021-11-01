@@ -114,3 +114,8 @@
   border-radius: 25px;
   margin-left: 1rem;
 }
+
+.action-button_order_text {
+  padding: 10px;
+  color: rgb(67, 139, 76);
+}

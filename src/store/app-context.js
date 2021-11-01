@@ -7,7 +7,9 @@ const AppContext = React.createContext({
     addProduct : (product) => {},
     removeProduct : (id) => {},
     deposit:0,
-    addDeposit : (dep) => {}
+    change: 0,
+    addDeposit : (dep) => {},
+    setChange : (change) => {}
 
 });
 

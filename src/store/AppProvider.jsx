@@ -1,7 +1,12 @@
 import AppContext from "./app-context";
 import { useReducer } from "react";
 import { cartReducer } from "../reducers/CartReducer";
-import { ADD_PRODUCT, REMOVE_PRODUCT, ADD_DEPOSIT } from "../Data/Constants";
+import {
+  ADD_PRODUCT,
+  REMOVE_PRODUCT,
+  ADD_DEPOSIT,
+  SET_CHANGE,
+} from "../Data/Constants";
 
 const AppProvider = (props) => {
   const [cartState, cartDispatch] = useReducer(cartReducer, {
@@ -9,6 +14,7 @@ const AppProvider = (props) => {
     removedProducts: [],
     totalAmount: 0,
     deposit: 0,
+    change: 0,
   });
   const addProductsToCartHandler = (product) => {
     cartDispatch({ type: ADD_PRODUCT, product });
@@ -19,15 +25,20 @@ const AppProvider = (props) => {
   const addDepositHandler = (deposit) => {
     cartDispatch({ type: ADD_DEPOSIT, deposit });
   };
+  const setChangeHandler = (change) => {
+    cartDispatch({ type: SET_CHANGE, change });
+  };
 
   const appContext = {
     products: cartState.products,
     removedProducts: cartState.removedProducts,
     totalAmount: cartState.totalAmount,
     deposit: cartState.deposit,
+    change: cartState.change,
     addProduct: addProductsToCartHandler,
     removeProduct: removeProductsToCartHandler,
     addDeposit: addDepositHandler,
+    setChange: setChangeHandler,
   };
   return (
     <AppContext.Provider value={appContext}>

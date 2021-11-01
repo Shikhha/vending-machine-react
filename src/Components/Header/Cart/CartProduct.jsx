@@ -21,6 +21,7 @@ const CartProduct = (props) => {
             <Button
               className={classes["cart-product_action"]}
               onClick={removeProductHandler}
+              disabled={props.isOrderPlaced}
             >
               Remove
             </Button>

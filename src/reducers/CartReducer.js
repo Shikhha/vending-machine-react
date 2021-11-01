@@ -1,18 +1,22 @@
-import { ADD_PRODUCT, REMOVE_PRODUCT, ADD_DEPOSIT} from "../Data/Constants"
+import { ADD_PRODUCT, REMOVE_PRODUCT, ADD_DEPOSIT, SET_CHANGE} from "../Data/Constants"
 import { findIndex } from "../helpers/arrayCalculations";
 export const cartReducer = (state, action) =>
 {
     if(action.type == ADD_DEPOSIT)
     {
-        let updatedState = { ...state,
-            deposit: action.deposit}
-            console.log(updatedState)
         return{
             ...state,
             deposit: action.deposit
         }
     }
 
+    if(action.type == SET_CHANGE)
+    {
+        return{
+            ...state,
+            change: action.change
+        }
+    }
     if(action.type == ADD_PRODUCT)
     {
         let updatedProducts = [];
