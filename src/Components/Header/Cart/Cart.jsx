@@ -4,29 +4,30 @@ import classes from "../Header.module.css";
 import Modal from "../../UI/Modal";
 import Button from "../../UI/Button";
 import CartProduct from "./CartProduct";
+import { ListGroup } from "react-bootstrap";
 
 const Cart = (props) => {
   const ctx = useContext(AppContext);
   const { products, totalAmount } = ctx;
   const totalAmt = `$${totalAmount}`;
-  const cartItems = (
-    <ul>
-      {products.map((product) => (
-        <CartProduct key={product.id} product={product} />
-      ))}
-    </ul>
-  );
+  const RemoveProductHandler = () => {};
 
   return (
     <Modal onClose={props.onClose}>
-      <ul>
-        {[{ id: "c1", name: "sushi", amount: "2" }].map((item) => (
-          <li>{item.name}</li>
+      <ListGroup>
+        {products.map((product) => (
+          <CartProduct
+            key={product.id}
+            product={product}
+            onRemove={RemoveProductHandler}
+          />
         ))}
-      </ul>
-      <div className={classes.total}>
-        <span>Total Amount</span>
-        <span>{ctx.totalAmount}</span>
+      </ListGroup>
+      <div className={classes["product-total"]}>
+        <span>Total Amount: </span>
+        <span className={classes["product-total_amount"]}>
+          {`$${totalAmount}`}
+        </span>
       </div>
       <div className={classes["action-button"]}>
         <Button
