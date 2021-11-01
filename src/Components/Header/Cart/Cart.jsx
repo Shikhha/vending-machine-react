@@ -10,8 +10,10 @@ const Cart = (props) => {
   const ctx = useContext(AppContext);
   const { products, totalAmount } = ctx;
   const totalAmt = `$${totalAmount}`;
-  const RemoveProductHandler = () => {};
-
+  const RemoveProductHandler = (id) => {
+    console.log("id: ", id);
+    ctx.removeProduct(id);
+  };
   return (
     <Modal onClose={props.onClose}>
       <ListGroup>

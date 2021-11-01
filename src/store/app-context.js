@@ -2,9 +2,12 @@ import React from 'react';
 
 const AppContext = React.createContext({
     products:[],
+    removedProducts: [],
     totalAmount : 0,
     addProduct : (product) => {},
-    removeProduct : (id) => {}
+    removeProduct : (id) => {},
+    deposit:0,
+    addDeposit : (dep) => {}
 
 });
 

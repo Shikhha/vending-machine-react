@@ -4,8 +4,11 @@ import Button from "../../UI/Button";
 import { ListGroup } from "react-bootstrap";
 
 const CartProduct = (props) => {
-  const { name, price, chosen } = props.product;
+  const { id, name, price, chosen } = props.product;
   const totalPrice = price * chosen;
+  const removeProductHandler = () => {
+    props.onRemove(id);
+  };
   return (
     <Fragment>
       <ListGroup.Item>
@@ -17,7 +20,7 @@ const CartProduct = (props) => {
           <div>
             <Button
               className={classes["cart-product_action"]}
-              onClick={props.onRemove}
+              onClick={removeProductHandler}
             >
               Remove
             </Button>

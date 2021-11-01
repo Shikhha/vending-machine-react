@@ -1,13 +1,14 @@
-import React, { Component } from "react";
+import React, { useContext } from "react";
 import Button from "../../UI/Button";
 import Card from "../../UI/Card";
+import AppContext from "../../../store/app-context";
 
 const Deposit = () => {
-  let deposit = 16;
+  const ctx = useContext(AppContext);
+  const { deposit } = ctx;
   return (
     <Card>
       <h3>Your Deposit: {deposit}</h3>
-      <Button>Make a purchase</Button>
     </Card>
   );
 };

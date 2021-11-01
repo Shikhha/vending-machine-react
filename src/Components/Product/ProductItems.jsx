@@ -5,9 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 
 const ProductItem = (props) => {
-  const { product, index } = props;
+  const { product, index, disablePurchase } = props;
   const isEmpty = product.amount - product.chosen;
   const addproductHandler = () => {
+    product.amount = product.amount - 1;
     product.chosen = product.chosen + 1;
     props.onBuy({ product, index });
   };
@@ -17,7 +18,7 @@ const ProductItem = (props) => {
       <Card.Body>
         <Card.Title>
           <span className={classes["product-card__title"]}>
-            {`${product.amount - product.chosen} left`}
+            {`${product.amount} left`}
           </span>
         </Card.Title>
         <Card.Text>{`$${product.price}`}</Card.Text>
@@ -25,7 +26,7 @@ const ProductItem = (props) => {
           variant="success"
           className={classes.test}
           onClick={addproductHandler}
-          disabled={!isEmpty}
+          disabled={!isEmpty || disablePurchase}
         >
           <FontAwesomeIcon icon={faShoppingBasket} />
           <span>Buy</span>

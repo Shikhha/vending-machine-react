@@ -1,16 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import AVAILABLE_COINS from "../../Data/AvailableCoins";
 import Deposit from "./Deposit/Deposit";
 import classes from "./CustomerPurse.module.css";
-import Button from "../UI/Button";
 import { Table } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
 import { CalculateSum } from "../../helpers/CoinCalculations";
+import useArray from "../../hooks/useArray";
+import CustomerPurseItem from "./CustomerPurseItem";
+import AppContext from "../../store/app-context";
 
 const CustomerPurse = () => {
-  let [coinsList, setCoinsList] = useState(AVAILABLE_COINS);
+  const ctx = useContext(AppContext);
+  const { array: coinList, update } = useArray(AVAILABLE_COINS);
   let [coinsSum, setCoinsSum] = useState(CalculateSum(AVAILABLE_COINS));
+  let [deposit, setDeposit] = useState(0);
+
+  useEffect(() => {
+    const deposit = 90 - coinsSum;
+    setDeposit(deposit);
+    ctx.addDeposit(deposit);
+  }, [coinsSum]);
+
+  const addDepositHandler = ({ coin, index }) => {
+    update(index, coin);
+    setCoinsSum(CalculateSum(coinList));
+  };
 
   return (
     <div className={classes["purse-container"]}>
@@ -26,14 +41,13 @@ const CustomerPurse = () => {
           </tr>
         </thead>
         <tbody>
-          {coinsList.map((coin) => (
-            <tr key={coin.id}>
-              <td className={classes["coin-value"]}>{`$${coin.value}`}</td>
-              <td>{coin.amount}</td>
-              <td>
-                <Button>Put a coin</Button>
-              </td>
-            </tr>
+          {coinList.map((coin, index) => (
+            <CustomerPurseItem
+              key={`${coin.id}index`}
+              coin={coin}
+              index={index}
+              onAddCoin={addDepositHandler}
+            />
           ))}
         </tbody>
         <tfoot>
@@ -44,7 +58,7 @@ const CustomerPurse = () => {
           </tr>
         </tfoot>
       </Table>
-      <Deposit></Deposit>
+      <Deposit />
     </div>
   );
 };

@@ -1,17 +1,45 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import AppContext from "../../store/app-context";
 import classes from "./Product.module.css";
 import ProductItem from "../Product/ProductItems";
 import AVAILABLE_PRODUCTS from "../../Data/AvailableProducts";
 import useArray from "../../hooks/useArray";
+import { findIndex } from "../../helpers/arrayCalculations";
 
 const Products = () => {
-  const { array: productList, set, update } = useArray(AVAILABLE_PRODUCTS);
+  const [disablePurchase, setDisablePurchase] = useState(false);
+  const {
+    array: productList,
+    set,
+    push,
+    remove,
+    update,
+  } = useArray(AVAILABLE_PRODUCTS);
   const ctx = useContext(AppContext);
+  useEffect(() => {
+    const { removedProducts } = ctx;
+    if (removedProducts) {
+      removedProducts.map((product) => {
+        const index = findIndex(productList, product);
+        product.amount = product.amount + product.chosen;
+        product.chosen = 0;
+      });
+      if (ctx.deposit <= 0) {
+        setDisablePurchase(true);
+      } else {
+        setDisablePurchase(false);
+      }
+    }
+  }, [ctx.removedProducts, ctx.deposit]);
 
   const updateProductsHandler = ({ product, index }) => {
     update(index, product);
     ctx.addProduct(product);
+    const deposit = ctx.deposit - product.price;
+    if (deposit <= 0) {
+      setDisablePurchase(true);
+    }
+    ctx.addDeposit(deposit);
   };
   return (
     <div className={classes["product-container"]}>
@@ -23,6 +51,7 @@ const Products = () => {
             onBuy={updateProductsHandler}
             product={item}
             index={index}
+            disablePurchase={disablePurchase}
           />
         ))}
       </div>
