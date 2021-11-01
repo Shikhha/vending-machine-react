@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./CustomerPurse.module.css";
 import Button from "../UI/Button";
+import PropTypes from "prop-types";
 
 const CustomerPurseItem = (props) => {
   const { coin, index } = props;
@@ -19,6 +20,14 @@ const CustomerPurseItem = (props) => {
       </td>
     </tr>
   );
+};
+
+CustomerPurseItem.prototype = {
+  coin: PropTypes.objectOf(
+    PropTypes.string.isRequired,
+    PropTypes.number.isRequired,
+    PropTypes.number.isRequired
+  ),
 };
 
 export default CustomerPurseItem;

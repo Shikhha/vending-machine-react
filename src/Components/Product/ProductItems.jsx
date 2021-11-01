@@ -3,6 +3,8 @@ import classes from "./Product.module.css";
 import { Card, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
+import { propTypes } from "react-bootstrap/esm/Image";
+import PropTypes from "prop-types";
 
 const ProductItem = (props) => {
   const { product, index, disablePurchase } = props;
@@ -36,5 +38,13 @@ const ProductItem = (props) => {
   );
 };
 
-ProductItem.prototype = {};
+ProductItem.prototype = {
+  product: PropTypes.objectOf(
+    PropTypes.string.isRequired,
+    PropTypes.string.isRequired,
+    PropTypes.number.isRequired,
+    PropTypes.number.isRequired,
+    PropTypes.number.isRequired
+  ),
+};
 export default ProductItem;

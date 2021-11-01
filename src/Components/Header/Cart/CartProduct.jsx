@@ -7,7 +7,7 @@ const CartProduct = (props) => {
   const { id, name, price, chosen } = props.product;
   const totalPrice = price * chosen;
   const removeProductHandler = () => {
-    props.onRemove(id);
+    props.onRemove({ id, totalPrice });
   };
   return (
     <Fragment>

@@ -11,13 +11,13 @@ const Cart = (props) => {
   const ctx = useContext(AppContext);
   const { products, totalAmount, deposit } = ctx;
   const totalAmt = `$${totalAmount}`;
-  const RemoveProductHandler = (id) => {
+  const RemoveProductHandler = ({ id, totalPrice }) => {
     ctx.removeProduct(id);
+    ctx.addDeposit(ctx.deposit + totalPrice);
   };
   const orderPlacedHandler = () => {
-    console.log("deposit : ", deposit);
-    const change = deposit - totalAmount;
-    ctx.setChange(change);
+    ctx.setChange(deposit);
+    ctx.addDeposit(0);
     setOrderPlaced(true);
   };
   return (
