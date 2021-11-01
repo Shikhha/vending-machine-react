@@ -19,6 +19,7 @@ const Products = () => {
       <div className={classes["product-container_list"]}>
         {productList.map((item, index) => (
           <ProductItem
+            key={item.id}
             onBuy={updateProductsHandler}
             product={item}
             index={index}

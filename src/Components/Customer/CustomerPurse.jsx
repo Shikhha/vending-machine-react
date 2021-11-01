@@ -27,7 +27,7 @@ const CustomerPurse = () => {
         </thead>
         <tbody>
           {coinsList.map((coin) => (
-            <tr>
+            <tr key={coin.id}>
               <td className={classes["coin-value"]}>{`$${coin.value}`}</td>
               <td>{coin.amount}</td>
               <td>
@@ -38,7 +38,7 @@ const CustomerPurse = () => {
         </tbody>
         <tfoot>
           <tr>
-            <th colspan="2">Sum: {coinsSum}</th>
+            <th colSpan="2">Sum: {coinsSum}</th>
             <th></th>
             <th></th>
           </tr>

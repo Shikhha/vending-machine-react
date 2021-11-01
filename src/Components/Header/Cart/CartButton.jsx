@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import AppContext from "../../../store/app-context";
 import CartIcon from "./CartIcon";
 import { calculateNoOfItems } from "../../../helpers/arrayCalculations";

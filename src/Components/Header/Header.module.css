@@ -65,50 +65,33 @@
   margin: 1rem 0;
 }
 
-.actions {
+.action-button {
   text-align: right;
 }
 
-.actions button {
+.action-button_close {
+  color: #8a2b06;
+}
+
+.action-button_order {
+  background-color: transparent;
+}
+
+.action-button button {
   font: inherit;
   cursor: pointer;
   background-color: transparent;
   border: 1px solid #8a2b06;
+  background-color: #8a2b06;
+  color: white;
   padding: 0.5rem 2rem;
   border-radius: 25px;
   margin-left: 1rem;
 }
 
-.actions button:hover,
-.actions button:active {
+.action-button button:hover,
+.action-button button:active {
   background-color: #5a1a01;
   border-color: #5a1a01;
   color: white;
-}
-
-.actions .button--alt {
-  color: #8a2b06;
-}
-
-.actions .button {
-  background-color: #8a2b06;
-  color: white;
-}
-
-@keyframes bump {
-  0% {
-    transform: scale(1);
-  }
-  10% {
-    transform: scale(0.9);
-  }
-  30% {
-    transform: scale(1.1);
-  }
-  50% {
-    transform: scale(1.15);
-  }
-  100% {
-    transform: scale(1);
-  }
 }
