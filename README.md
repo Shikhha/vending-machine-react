@@ -6,7 +6,7 @@ This app was built from a coding challenge to create a vending machine using onl
 
 ## Initial Setup
 
-run npm install && npm run start
+run <b> npm install && npm run start</b>
 
 Runs the app in the development mode.
 Open http://localhost:3000 to view it in the browser.
