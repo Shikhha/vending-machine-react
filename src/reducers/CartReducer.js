@@ -1,4 +1,4 @@
-import { ADD_PRODUCT, REMOVE_PRODUCT, ADD_DEPOSIT, SET_CHANGE} from "../Data/Constants"
+import { ADD_PRODUCT, REMOVE_PRODUCT, ADD_DEPOSIT, SET_CHANGE} from "../data/Constants"
 import { findIndex } from "../helpers/arrayCalculations";
 export const cartReducer = (state, action) =>
 {

@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from "react";
-import AVAILABLE_COINS from "../../Data/AvailableCoins";
+import AVAILABLE_COINS from "../../data/AvailableCoins";
 import Deposit from "./Deposit/Deposit";
 import classes from "./CustomerPurse.module.css";
 import { Table } from "react-bootstrap";

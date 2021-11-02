@@ -1,8 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import AppContext from "../../store/app-context";
 import classes from "./Product.module.css";
-import ProductItem from "../Product/ProductItems";
-import AVAILABLE_PRODUCTS from "../../Data/AvailableProducts";
+import ProductItem from "./ProductItems";
+import AVAILABLE_PRODUCTS from "../../data/AvailableProducts";
 import useArray from "../../hooks/useArray";
 import { findIndex } from "../../helpers/arrayCalculations";
 

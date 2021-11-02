@@ -6,7 +6,7 @@ import {
   REMOVE_PRODUCT,
   ADD_DEPOSIT,
   SET_CHANGE,
-} from "../Data/Constants";
+} from "../data/Constants";
 
 const AppProvider = (props) => {
   const [cartState, cartDispatch] = useReducer(cartReducer, {
