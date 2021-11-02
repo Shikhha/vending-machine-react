@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import AppContext from "../../../store/app-context";
+import AppContext from "../../../store/App-context";
 import CartIcon from "./CartIcon";
-import { calculateNoOfItems } from "../../../helpers/arrayCalculations";
+import { calculateNoOfItems } from "../../../helpers/ArrayCalculations";
 import classes from "../Header.module.css";
 
 const CartButton = (props) => {

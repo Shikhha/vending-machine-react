@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import AppContext from "../../../store/app-context";
+import AppContext from "../../../store/App-context";
 import classes from "../Header.module.css";
 import Modal from "../../UI/Modal";
 import Button from "../../UI/Button";

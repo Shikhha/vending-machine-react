@@ -1,10 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
-import AppContext from "../../store/app-context";
+import AppContext from "../../store/App-context";
 import classes from "./Product.module.css";
 import ProductItem from "./ProductItems";
 import AVAILABLE_PRODUCTS from "../../data/AvailableProducts";
-import useArray from "../../hooks/useArray";
-import { findIndex } from "../../helpers/arrayCalculations";
+import useArray from "../../hooks/UseArray";
+import { findIndex } from "../../helpers/ArrayCalculations";
 
 const Products = () => {
   const [disablePurchase, setDisablePurchase] = useState(false);

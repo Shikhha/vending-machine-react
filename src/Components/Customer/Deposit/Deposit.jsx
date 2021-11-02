@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Button from "../../UI/Button";
 import Card from "../../UI/Card";
-import AppContext from "../../../store/app-context";
+import AppContext from "../../../store/App-context";
 
 const Deposit = () => {
   const ctx = useContext(AppContext);

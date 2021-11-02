@@ -6,9 +6,9 @@ import { Table } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
 import { CalculateSum } from "../../helpers/CoinCalculations";
-import useArray from "../../hooks/useArray";
+import useArray from "../../hooks/UseArray";
 import CustomerPurseItem from "./CustomerPurseItem";
-import AppContext from "../../store/app-context";
+import AppContext from "../../store/App-context";
 
 const CustomerPurse = () => {
   const ctx = useContext(AppContext);

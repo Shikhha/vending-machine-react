@@ -1,5 +1,5 @@
 import { ADD_PRODUCT, REMOVE_PRODUCT, ADD_DEPOSIT, SET_CHANGE} from "../data/Constants"
-import { findIndex } from "../helpers/arrayCalculations";
+import { findIndex } from "../helpers/ArrayCalculations";
 export const cartReducer = (state, action) =>
 {
     if(action.type == ADD_DEPOSIT)
